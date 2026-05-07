@@ -57,13 +57,8 @@ index.php           -> Home pubblica con galleria multimediale
    - `category`: `Tradizione` o `Innovazione`
    - `media_type`: `image`, `video`, `youtube` (nel dump popolato)
 
-### Nota sulla coerenza schema
-Per una **installazione pulita** è consigliato partire da `schema_base.sql` e poi aggiornare `media_type` per includere `youtube`. Per un ambiente **dimostrativo** con dati di esempio, usare direttamente `popolato.sql`.
-Il file `schema_base.sql` contiene `media_type` con soli valori `video` e `image`, mentre il dump `popolato.sql` include anche `youtube`. Se si usa lo schema base, è necessario aggiornare l’enum per includere `youtube`, ad esempio:
-```
-ALTER TABLE media_contents
-  MODIFY media_type ENUM('video','image','youtube') NOT NULL;
-```
+### Scelta dello schema
+Per una **installazione pulita** è consigliato partire da `schema_base.sql`. Per un ambiente **dimostrativo** con dati di esempio, usare direttamente `popolato.sql`.
 
 ## 6. Flusso principale dei dati
 1. L’admin inserisce un contenuto (file o link YouTube).
@@ -77,7 +72,7 @@ ALTER TABLE media_contents
    - Importare `database/schema_base.sql` o `database/popolato.sql`.
 2. **Connessione**
    - Configurata in `includes/db_connect.php` (host `localhost`, db `lanificio_sella`).
-   - Usare un utente dedicato con privilegi minimi invece di `root` (es. `SELECT` su `admins`, `SELECT/INSERT/DELETE` su `media_contents`).
+   - Usare un utente dedicato con privilegi minimi invece di `root` (per l’app attuale: `SELECT` su `admins`, `SELECT/INSERT/DELETE` su `media_contents`; se si aggiunge gestione utenti, includere `INSERT/UPDATE` su `admins`).
    - Gestire le credenziali fuori dal versionamento (es. variabili d’ambiente o file escluso con `.gitignore`).
 3. **Server**
    - PHP 8.x con estensione MySQLi attiva.

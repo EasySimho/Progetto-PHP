@@ -16,7 +16,7 @@ CREATE TABLE media_contents (
     title VARCHAR(255) NOT NULL,
     description TEXT,
     category ENUM('Tradizione', 'Innovazione') NOT NULL,
-    media_type ENUM('video', 'image') NOT NULL,
+    media_type ENUM('video', 'image', 'youtube') NOT NULL,
     file_path VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
