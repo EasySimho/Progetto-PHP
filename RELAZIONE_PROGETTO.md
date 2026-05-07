@@ -58,7 +58,11 @@ index.php           -> Home pubblica con galleria multimediale
    - `media_type`: `image`, `video`, `youtube` (nel dump popolato)
 
 ### Nota sulla coerenza schema
-Il file `schema_base.sql` contiene `media_type` con soli valori `video` e `image`, mentre il dump `popolato.sql` include anche `youtube`. Se si usa lo schema base, è consigliato aggiornare l’enum per supportare i link YouTube.
+Il file `schema_base.sql` contiene `media_type` con soli valori `video` e `image`, mentre il dump `popolato.sql` include anche `youtube`. Se si usa lo schema base, è necessario aggiornare l’enum per includere `youtube`, ad esempio:
+```
+ALTER TABLE media_contents
+  MODIFY media_type ENUM('video','image','youtube') NOT NULL;
+```
 
 ## 6. Flusso principale dei dati
 1. L’admin inserisce un contenuto (file o link YouTube).
@@ -71,7 +75,9 @@ Il file `schema_base.sql` contiene `media_type` con soli valori `video` e `image
    - Creare il DB `lanificio_sella`.
    - Importare `database/schema_base.sql` o `database/popolato.sql`.
 2. **Connessione**
-   - Configurata in `includes/db_connect.php` (host `localhost`, db `lanificio_sella`); è consigliato usare un utente dedicato con privilegi minimi e gestire le credenziali fuori dal versionamento (es. variabili d’ambiente o file escluso con `.gitignore`).
+   - Configurata in `includes/db_connect.php` (host `localhost`, db `lanificio_sella`).
+   - Usare un utente dedicato con privilegi minimi invece di `root`.
+   - Gestire le credenziali fuori dal versionamento (es. variabili d’ambiente o file escluso con `.gitignore`).
 3. **Server**
    - PHP 8.x con estensione MySQLi attiva.
    - Server web (Apache/Nginx) con accesso in scrittura alla cartella `uploads/`.
