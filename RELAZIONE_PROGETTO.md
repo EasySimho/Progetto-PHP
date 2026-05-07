@@ -50,7 +50,7 @@ index.php           -> Home pubblica con galleria multimediale
 ### Tabelle principali
 1. **admins**
    - `id`, `username`, `password_hash`, `created_at`
-   - Utente demo presente nel dump (`simho` / password `test1234`).
+   - Utente demo presente nel dump (username `simho`); in ambienti reali sostituire le credenziali e rigenerare le password.
 
 2. **media_contents**
    - `id`, `title`, `description`, `category`, `media_type`, `file_path`, `created_at`
@@ -71,7 +71,7 @@ Il file `schema_base.sql` contiene `media_type` con soli valori `video` e `image
    - Creare il DB `lanificio_sella`.
    - Importare `database/schema_base.sql` o `database/popolato.sql`.
 2. **Connessione**
-   - Configurata in `includes/db_connect.php` (host `localhost`, user `root`, db `lanificio_sella`).
+   - Configurata in `includes/db_connect.php` (host `localhost`, db `lanificio_sella`); è consigliato usare un utente dedicato con privilegi minimi invece di `root`.
 3. **Server**
    - PHP 8.x con estensione MySQLi attiva.
    - Server web (Apache/Nginx) con accesso in scrittura alla cartella `uploads/`.
