@@ -55,7 +55,7 @@ index.php           -> Home pubblica con galleria multimediale
 2. **media_contents**
    - `id`, `title`, `description`, `category`, `media_type`, `file_path`, `created_at`
    - `category`: `Tradizione` o `Innovazione`
-   - `media_type`: `image`, `video`, `youtube` (nel dump popolato)
+   - `media_type`: `image`, `video`, `youtube`
 
 ### Scelta dello schema
 Per una **installazione pulita** è consigliato partire da `schema_base.sql`. Per un ambiente **dimostrativo** con dati di esempio, usare direttamente `popolato.sql`.
