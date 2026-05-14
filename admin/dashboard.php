@@ -50,7 +50,7 @@ $result = mysqli_query($conn, $sql);
                     <td><?php echo htmlspecialchars($row['media_type']); ?></td>
                     <td><?php echo htmlspecialchars($row['file_path']); ?></td>
                     <td>
-                        <a href="delete.php?id=<?php echo $row['id']; ?>" class="action-link danger"
+                        <a href="delete.php?id=<?php echo $row['id']; ?>" class=" btn"
                             onclick="return confirm('Sei sicuro?');">Elimina</a>
                     </td>
                 </tr>
